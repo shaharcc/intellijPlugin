@@ -1,0 +1,34 @@
+# Dockerfile for intellij
+
+# Use a base image with GUI and Java installed
+FROM dorowu/ubuntu-desktop-lxde-vnc
+
+# Add Google Chrome repository key
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+# Add Google Chrome repository to sources.list
+RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+
+# Update package lists and install required packages
+RUN apt-get update && \
+    apt-get install -y \
+    wget \
+    unzip \
+    openjdk-17-jdk \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install IntelliJ IDEA
+RUN wget https://download.jetbrains.com/idea/ideaIC-2023.1.3.tar.gz -O /tmp/intellij.tar.gz \
+    && mkdir /opt/intellij \
+    && tar -xzf /tmp/intellij.tar.gz -C /opt/intellij --strip-components=1 \
+    && rm /tmp/intellij.tar.gz
+
+# Copy the plugin to the appropriate directory
+COPY points-to-plugin/build/distributions/PointsTo-0.0.1.zip /tmp/PointsTo-0.0.1.zip
+
+# Set the working directory to where IntelliJ IDEA is installed
+WORKDIR /opt/intellij/bin
+
+# Start IntelliJ IDEA
+CMD ["./idea.sh"]

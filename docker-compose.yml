@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  analyzer-service:
+    build:
+      context: ./analyzerService
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./analyzerService:/app/analyzerService
+    command: ["./gradlew", "bootRun"]
+    working_dir: /app/analyzerService
+
+  intellij:
+    build:
+      context: .
+      dockerfile: Dockerfile.intellij
+    ports:
+      - "6080:80"  # Port for VNC access
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./example:/root/example
+    environment:
+      - DISPLAY=unix$DISPLAY
+    tty: true
+    stdin_open: true
