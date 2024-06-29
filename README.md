@@ -38,12 +38,12 @@ To install the IntelliJ IDEA plugin:
 
 ### Running the Example Java Project
 #### To demonstrate the PointsTo plugin:
-Launch IntelliJ IDEA.
-Open the example directory as a project.
-Modify the main method and classes to use the PointsTo plugin.
-Click **Run** to initiate visual analysis.
-Use **Refresh** to update analysis after changes.
-Click **Clear** to remove the graph from the workspace.
+- Launch IntelliJ IDEA.
+- Open the example directory as a project.
+- Modify the main method and classes to use the PointsTo plugin.
+- Click **Run** to initiate visual analysis.
+- Use **Refresh** to update analysis after changes.
+- Click **Clear** to remove the graph from the workspace.
 
 #### Watch the Demo
 Watch a demo of the Points-To Analysis Plugin in action: [Watch Video](https://drive.google.com/file/d/1c1ZOMR-tR7XBI-TxKN7dAJn07cPKPT08/view?usp=sharing)
