@@ -5,5 +5,8 @@ public class Main {
         Teacher Dean = new Teacher("Craig", 123);
         Student Troy = new Student("Troy", 456);
         Dean.addStudent(Troy);
+        Greendale.addTeacher(Dean);
+        Student Abed = new Student("Abed", 456);
+        Dean.addStudent(Abed);
     }
 }
