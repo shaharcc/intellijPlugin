@@ -1,0 +1,4 @@
+((nodeLabel = "Greendale", nodeType = "var", properties = []), (nodeLabel = "School", nodeType = "type", properties = [teachers, name]))
+((nodeLabel = "Dean", nodeType = "var", properties = []), (nodeLabel = "Teacher", nodeType = "type", properties = [name, students]))
+((nodeLabel = "Troy", nodeType = "var", properties = []), (nodeLabel = "Student", nodeType = "type", properties = [name]))
+((nodeLabel = "Dean", nodeType = "var", properties = []), (nodeLabel = "Troy", nodeType = "var", properties = []), edgeText = "addStudent")

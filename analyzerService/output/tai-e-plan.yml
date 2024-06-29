@@ -1,0 +1,22 @@
+- id: pta
+  options:
+    cs: 2-type
+    only-app: true
+    implicit-entries: true
+    distinguish-string-constants: app
+    merge-string-objects: true
+    merge-string-builders: true
+    merge-exception-objects: true
+    handle-invokedynamic: false
+    propagate-types:
+    - reference
+    advanced: zipper
+    dump: true
+    dump-ci: false
+    dump-yaml: false
+    expected-file: null
+    reflection-inference: string-constant
+    reflection-log: null
+    taint-config: null
+    plugins: []
+    time-limit: -1

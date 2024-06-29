@@ -1,0 +1,22 @@
+optionsFile: null
+printHelp: false
+classPath:
+- tai-e-zipper/input/main
+appClassPath: []
+mainClass: main.Main
+inputClasses: []
+javaVersion: 8
+prependJVM: false
+allowPhantom: false
+worldBuilderClass: pascal.taie.frontend.soot.SootWorldBuilder
+outputDir: output
+preBuildIR: false
+worldCacheMode: false
+scope: APP
+nativeModel: true
+planFile: null
+analyses:
+  pta: cs:2-type;only-app:true;distinguish-string-constants:app;dump:true;advanced:zipper
+onlyGenPlan: false
+keepResult:
+- $KEEP-ALL

@@ -1,0 +1,43 @@
+Points-to sets of all variables
+[]:<java.lang.Thread: void <init>(java.lang.ThreadGroup,java.lang.String)>/$r1 -> []
+[]:<java.lang.Thread: void <init>(java.lang.ThreadGroup,java.lang.String)>/%this -> [[]:EntryPointObj{alloc=<main-thread>,type=java.lang.Thread}]
+[]:<java.lang.Thread: void <init>(java.lang.ThreadGroup,java.lang.String)>/r2 -> [[]:EntryPointObj{alloc=<main-thread-group>,type=java.lang.ThreadGroup}]
+[]:<java.lang.Thread: void <init>(java.lang.ThreadGroup,java.lang.String)>/r3 -> [[]:MergedObj{<Merged string constants>}]
+[]:<java.lang.ThreadGroup: void <init>()>/%stringconst1 -> []
+[]:<java.lang.ThreadGroup: void <init>()>/%this -> [[]:EntryPointObj{alloc=<system-thread-group>,type=java.lang.ThreadGroup}]
+[]:<java.lang.ThreadGroup: void <init>(java.lang.ThreadGroup,java.lang.String)>/%this -> [[]:EntryPointObj{alloc=<main-thread-group>,type=java.lang.ThreadGroup}]
+[]:<java.lang.ThreadGroup: void <init>(java.lang.ThreadGroup,java.lang.String)>/r1 -> [[]:EntryPointObj{alloc=<system-thread-group>,type=java.lang.ThreadGroup}]
+[]:<java.lang.ThreadGroup: void <init>(java.lang.ThreadGroup,java.lang.String)>/r3 -> [[]:MergedObj{<Merged string constants>}]
+[]:<main.Main: void main(java.lang.String[])>/$r0 -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[0@L4] new main.School}]
+[]:<main.Main: void main(java.lang.String[])>/$r1 -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[3@L5] new main.Teacher}]
+[]:<main.Main: void main(java.lang.String[])>/$r2 -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[7@L6] new main.Student}]
+[]:<main.Main: void main(java.lang.String[])>/%stringconst0 -> [[]:ConstantObj{java.lang.String: "Greendale"}]
+[]:<main.Main: void main(java.lang.String[])>/%stringconst1 -> [[]:ConstantObj{java.lang.String: "Craig"}]
+[]:<main.Main: void main(java.lang.String[])>/%stringconst3 -> [[]:ConstantObj{java.lang.String: "Troy"}]
+[]:<main.Main: void main(java.lang.String[])>/r3 -> [[]:EntryPointObj{alloc=MethodParam{<main.Main: void main(java.lang.String[])>/0},type=java.lang.String[] in <main.Main: void main(java.lang.String[])>}]
+[]:<main.School: void <init>(java.lang.String)>/$r2 -> [[]:NewObj{<main.School: void <init>(java.lang.String)>[2@L10] new java.util.ArrayList}]
+[]:<main.School: void <init>(java.lang.String)>/%this -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[0@L4] new main.School}]
+[]:<main.School: void <init>(java.lang.String)>/name -> [[]:ConstantObj{java.lang.String: "Greendale"}]
+[]:<main.Student: void <init>(java.lang.String,int)>/%this -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[7@L6] new main.Student}]
+[]:<main.Student: void <init>(java.lang.String,int)>/name -> [[]:ConstantObj{java.lang.String: "Troy"}]
+[]:<main.Teacher: void <init>(java.lang.String,int)>/$r2 -> [[]:NewObj{<main.Teacher: void <init>(java.lang.String,int)>[3@L12] new java.util.ArrayList}]
+[]:<main.Teacher: void <init>(java.lang.String,int)>/%this -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[3@L5] new main.Teacher}]
+[]:<main.Teacher: void <init>(java.lang.String,int)>/name -> [[]:ConstantObj{java.lang.String: "Craig"}]
+[]:<main.Teacher: void addStudent(main.Student)>/$r2 -> [[]:NewObj{<main.Teacher: void <init>(java.lang.String,int)>[3@L12] new java.util.ArrayList}]
+[]:<main.Teacher: void addStudent(main.Student)>/%this -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[3@L5] new main.Teacher}]
+[]:<main.Teacher: void addStudent(main.Student)>/student -> [[]:NewObj{<main.Main: void main(java.lang.String[])>[7@L6] new main.Student}]
+
+Points-to sets of all static fields
+
+Points-to sets of all instance fields
+[]:EntryPointObj{alloc=<main-thread>,type=java.lang.Thread}.blockerLock -> []
+[]:EntryPointObj{alloc=<system-thread-group>,type=java.lang.ThreadGroup}.name -> []
+[]:NewObj{<main.Main: void main(java.lang.String[])>[0@L4] new main.School}.name -> [[]:ConstantObj{java.lang.String: "Greendale"}]
+[]:NewObj{<main.Main: void main(java.lang.String[])>[0@L4] new main.School}.teachers -> [[]:NewObj{<main.School: void <init>(java.lang.String)>[2@L10] new java.util.ArrayList}]
+[]:NewObj{<main.Main: void main(java.lang.String[])>[3@L5] new main.Teacher}.name -> [[]:ConstantObj{java.lang.String: "Craig"}]
+[]:NewObj{<main.Main: void main(java.lang.String[])>[3@L5] new main.Teacher}.students -> [[]:NewObj{<main.Teacher: void <init>(java.lang.String,int)>[3@L12] new java.util.ArrayList}]
+[]:NewObj{<main.Main: void main(java.lang.String[])>[7@L6] new main.Student}.name -> [[]:ConstantObj{java.lang.String: "Troy"}]
+
+Points-to sets of all array indexes
+[]:EntryPointObj{alloc=MethodParam{<main.Main: void main(java.lang.String[])>/0},type=java.lang.String[] in <main.Main: void main(java.lang.String[])>}[*] -> [[]:EntryPointObj{alloc=MethodParam{<main.Main: void main(java.lang.String[])>/0}[*],type=java.lang.String in <main.Main: void main(java.lang.String[])>}]
+
