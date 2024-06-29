@@ -25,7 +25,7 @@ public class MockAnalyzerService {
             Files.createDirectories(Path.of(TAI_E_DIR + "/input"));
             List<Path> savedFiles = saveFiles(files);
             compileJavaFiles(savedFiles);
-            String jarCommand = "java -jar build/tai-e-all-0.5.1-SNAPSHOT.jar -cp input -m main.Main -java 8 -a \"pta=cs:2-type;only-app:true;distinguish-string-constants:app;dump:true;advanced:zipper\"";
+            String jarCommand = "java -jar tai-e-all-0.5.1-SNAPSHOT.jar -cp input -m main.Main -java 8 -a \"pta=cs:2-type;only-app:true;distinguish-string-constants:app;dump:true;advanced:zipper\"";
             executeCommand(jarCommand);
 
             // Read the content of graphInput.txt and return as response
