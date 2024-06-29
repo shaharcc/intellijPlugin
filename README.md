@@ -1,52 +1,48 @@
-Points-To Analysis Plugin for IntelliJ IDEA
-Overview
-This project includes two main components:
+# Points-To Analysis Plugin for IntelliJ IDEA
+## Overview
+This project integrates a points-to analysis tool directly into IntelliJ IDEA, combining a Spring Boot service for analysis and an IntelliJ plugin for seamless integration.
 
-analyzerService: A service built with Spring Boot for conducting points-to analysis using the TAI-E-Zipper framework.
-PointsTo-0.0.1.zip: A plugin for IntelliJ IDEA that integrates our points-to analysis capabilities directly into the IDE.
-Components
-1. analyzerService
-   The analyzerService directory contains:
+### Components
+1. **analyzerService**
+   - **tai-e-zipper**: Core logic for points-to analysis.
+   - **Service Implementation**: Spring Boot application (`AnalyzerService`) providing endpoints for analysis.
 
-tai-e-zipper: This directory houses the core logic for performing points-to analysis.
-Service Implementation: Spring Boot application (MockAnalyzerService) providing endpoints to trigger points-to analysis on uploaded Java files.
-2. PointsTo-0.0.1.zip
-   This plugin enables IntelliJ IDEA users to:
+2. **PointsTo-0.0.1.zip**
+   - IntelliJ IDEA plugin enabling advanced points-to analysis features.
+  
 
-example
-The example directory contains a simple Java project that demonstrates how to use the PointsTo plugin. It includes three classes and a main method that utilizes them.
-
-Install our points-to analysis tool directly within their IDE environment.
-Utilize advanced points-to analysis features seamlessly integrated into their development workflow.
-Installation and Usage
-Running analyzerService
+## Installation and Usage
+### Running analyzerService
 To run the analyzerService locally:
 
-Navigate to the analyzerService directory.
-Build the project using Gradle:
-bash
-Copy code
+1. Navigate to the analyzerService directory.
+2. Build the project using Gradle:
+```bash
 ./gradlew build
-Start the Spring Boot application:
-bash
-Copy code
+```
+3. Start the Spring Boot application:
+```bash
 ./gradlew bootRun
-The service will be accessible at http://localhost:8080.
-Installing PointsTo-0.0.1.zip Plugin
+```
+
+4. Access the service at http://localhost:8080.
+
+
+### Installing PointsTo-0.0.1.zip Plugin
 To install the IntelliJ IDEA plugin:
 
-Open IntelliJ IDEA.
-Go to File -> Settings -> Plugins.
-Click on Install plugin from disk....
-Select PointsTo-0.0.1.zip from your local file system.
-Restart IntelliJ IDEA to enable the plugin.
+1. Open IntelliJ IDEA.
+2. Go to File -> Settings -> Plugins.
+3. Click on Install plugin from disk....
+4. Select PointsTo-0.0.1.zip from your local file system.
 
-Running the Example Java Project
-Open in IntelliJ IDEA:
-
+### Running the Example Java Project
+#### To demonstrate the PointsTo plugin:
 Launch IntelliJ IDEA.
 Open the example directory as a project.
-Modify the main method and classes within the example Java project to incorporate the PointsTo plugin functionality.
-Click the "Run" button to initiate the visual analysis.
-Use the "Refresh" button to update the analysis after making any changes.
-To remove the graph from the workspace, click the "Clear" button.
+Modify the main method and classes to use the PointsTo plugin.
+Click **Run** to initiate visual analysis.
+Use **Refresh** to update analysis after changes.
+Click **Clear** to remove the graph from the workspace.
+
+Watch a demo of the Points-To Analysis Plugin in action:
