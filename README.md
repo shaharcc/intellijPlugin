@@ -1,9 +1,30 @@
 # Points-To Analysis Plugin for IntelliJ IDEA
 
-## Overview
-This project integrates a points-to analysis tool directly into IntelliJ IDEA, combining a Spring Boot service for analysis and an IntelliJ plugin for seamless integration.
+## Table of Contents
+- [Overview](#overview)
+- [Components](#components)
+- [Installation and Usage](#installation-and-usage)
+  - [Project Setup Instructions](#project-setup-instructions)
+    - [Download and Install Microsoft Build of OpenJDK](#download-and-install-microsoft-build-of-openjdk)
+    - [Download and Install Gradle 8.5](#download-and-install-gradle-85)
+    - [Download and Install cURL](#download-and-install-curl)
+    - [Download and Install IntelliJ IDEA](#download-and-install-intellij-idea)
+    - [Download and Install Graphviz](#download-and-install-graphviz)
+    - [Clone and Install the IntelliJ Plugin Project](#clone-and-install-the-intellij-plugin-project)
+  - [Running analyzerService](#running-analyzerservice)
+  - [Install the plugin](#install-the-plugin)
+  - [Running the Example Java Project](#running-the-example-java-project)
+- [Videos](#videos)
+  - [Watch the Demo](#watch-the-demo)
+  - [Watch the Pilot Study](#watch-the-pilot-study)
 
-### Components
+## Overview
+This project integrates a points-to analysis tool directly into IntelliJ IDEA, combining a Spring Boot service for analysis and an IntelliJ plugin that utilizes the analysis service.
+
+
+<img src="https://github.com/shaharcc/intellijPlugin/assets/100072700/17d361f0-b881-4123-8945-d0b00c25abe5" alt="Points-To Analysis Plugin" width="600">
+
+## Components
 1. **analyzerService**
    - **tai-e-zipper**: Core logic for points-to analysis.
    - **Service Implementation**: Spring Boot application (`AnalyzerService`) providing endpoints for plugin.
@@ -154,5 +175,12 @@ To run the analyzerService locally:
 - Use **Refresh** to update analysis after changes.
 - Click **Clear** to remove the graph from the workspace.
 
+
+### Videos
+
 #### Watch the Demo
-Watch a demo of the Points-To Analysis Plugin in action: [Watch Video](https://drive.google.com/file/d/1c1ZOMR-tR7XBI-TxKN7dAJn07cPKPT08/view?usp=sharing)
+Watch a demo of the Points-To Analysis Plugin in action: [Watch demo](https://drive.google.com/file/d/1c1ZOMR-tR7XBI-TxKN7dAJn07cPKPT08/view?usp=sharing)
+
+
+#### Watch the Pilot Study
+Watch our pilot study, where two users complete the same task—one using the plugin and one not: [Watch pilot study](https://drive.google.com/file/d/1Y4w5Z7J5_wkD_SPwgwJhdnWJcp7F2Yve/view?usp=sharing)
