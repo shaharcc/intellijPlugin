@@ -22,8 +22,8 @@
 
 package pascal.taie.analysis.pta;
 
-import pascal.taie.Main;
 import picocli.CommandLine;
+import pascal.taie.Main;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -37,23 +37,17 @@ import java.util.stream.Collectors;
 public class BenchmarkRunner {
 
     private static final String BENCHMARK_HOME = "java-benchmarks";
-
     private static final String BENCHMARK_INFO = "java-benchmarks/benchmark-info.yml";
+    private static final Map<String, BenchmarkInfo> benchmarkInfos = BenchmarkInfo.load(BENCHMARK_INFO);
 
-    private static final Map<String, BenchmarkInfo> benchmarkInfos =
-            BenchmarkInfo.load(BENCHMARK_INFO);
-
-    @CommandLine.Option(names = "-cs", defaultValue = "ci")
+    @CommandLine.Option(names = "-cs", defaultValue = "2-type")
     private String cs;
 
-    @CommandLine.Option(names = "-java", defaultValue = "0")
+    @CommandLine.Option(names = "-java", defaultValue = "8")
     private int jdk;
 
-    @CommandLine.Option(names = "-advanced", defaultValue = "null")
+    @CommandLine.Option(names = "-advanced", defaultValue = "zipper")
     private String advanced;
-
-    @CommandLine.Parameters
-    private List<String> benchmarks;
 
     public static void main(String[] args) {
         BenchmarkRunner runner = CommandLine.populateCommand(new BenchmarkRunner(), args);
@@ -61,44 +55,44 @@ public class BenchmarkRunner {
     }
 
     private void runAll() {
-        if (benchmarks == null) {
-            throw new IllegalArgumentException("benchmarks are not given");
+        if (benchmarkInfos.isEmpty()) {
+            throw new IllegalArgumentException("No benchmarks are provided in the YAML file.");
         }
-        benchmarks.forEach(this::run);
+        benchmarkInfos.values().forEach(this::run);
     }
 
-    private void run(String benchmark) {
-        System.out.println("\nAnalyzing " + benchmark);
-        Main.main(composeArgs(benchmark));
+    private void run(BenchmarkInfo info) {
+        System.out.println("\nAnalyzing " + info.id());
+        if (Objects.equals(info.id(), "fop") || Objects.equals(info.id(), "jython") ||
+        Objects.equals(info.id(), "briss-0.9")){
+            return;
+        }
+        Main.main(composeArgs(info));
     }
 
-    private String[] composeArgs(String benchmark) {
-        BenchmarkInfo info = benchmarkInfos.get(benchmark);
+    private String[] composeArgs(BenchmarkInfo info) {
         List<String> args = new ArrayList<>();
         int jdkVersion = jdk != 0 ? jdk : info.jdk();
         Collections.addAll(args,
                 "-java", Integer.toString(jdkVersion),
-                "-acp", buildClassPath(info.apps()),
+                "-cp", buildClassPath(info.apps()),
                 "-cp", buildClassPath(info.libs()),
-                "-wc",
                 "-m", info.main());
-        if (info.allowPhantom()) {
-            args.add("--allow-phantom");
-        }
         Map<String, String> ptaArgs = Map.of(
-                "distinguish-string-constants", "null",
-                "merge-string-objects", "false",
                 "cs", cs,
+                "only-app", "true",
+                "distinguish-string-constants", "app",
+                "dump", "true",
                 "advanced", advanced,
-                "reflection-inference", "null",
                 "reflection-log", new File(BENCHMARK_HOME, info.reflectionLog()).toString());
         Collections.addAll(args,
                 "-a", "pta=" + ptaArgs.entrySet()
                         .stream()
                         .map(e -> e.getKey() + ":" + e.getValue())
-                        .collect(Collectors.joining(";")),
-                "-a", "may-fail-cast",
-                "-a", "poly-call");
+                        .collect(Collectors.joining(";")));
+        if (info.allowPhantom()) {
+            args.add("--allow-phantom");
+        }
         return args.toArray(new String[0]);
     }
 
